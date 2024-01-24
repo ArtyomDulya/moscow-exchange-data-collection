@@ -2,7 +2,8 @@ package models
 
 
 case class SecurityModel(
-                           id: Long,
+                           id: Option[Long],
+                           idSecurity: String,
                            secId: String,
                            regNumber: String,
                            name: String,

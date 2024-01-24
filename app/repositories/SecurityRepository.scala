@@ -13,7 +13,9 @@ class SecurityRepository @Inject()() {
 
   val db = Database.forConfig("postgres")
 
-  private val securityTable = TableQuery[SecurityTable]
+  private lazy val securityTable = TableQuery[SecurityTable]
+
+  db.run(securityTable.schema.create)
 
   def insertData(data: SecurityModel): Future[Int] = db.run(securityTable += data)
 

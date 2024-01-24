@@ -13,13 +13,14 @@ CREATE TABLE users
 CREATE TABLE securities
 (
     id            SERIAL PRIMARY KEY,
+    id_security   VARCHAR(64),
     sec_id        VARCHAR(64),
     reg_number    VARCHAR(64),
     name          VARCHAR(64),
     emitent_title VARCHAR(64)
 );
 
-
+DROP TABLE securities;
 --changeset artyomdulya:3
 CREATE TABLE trade_history
 (

@@ -14,11 +14,11 @@ class TradeHistoryTable(tag: Tag) extends Table[TradeHistoryModel](tag, "trade_h
 
   def tradeDate = column[Option[Date]]("trade_date")
 
-  def numTrades = column[String]("num_trades")
+  def numTrades = column[Option[Double]]("num_trades")
 
-  def open = column[Double]("open")
+  def open = column[Option[Double]]("open")
 
-  def close = column[Double]("close")
+  def close = column[Option[Double]]("close")
 
   def * = (id, secId, tradeDate, numTrades, open, close) <> (TradeHistoryModel.tupled, TradeHistoryModel.unapply)
 }

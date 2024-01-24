@@ -10,15 +10,19 @@ GET         /                     controllers.UserController.loginPage()
 
 GET         /home                 controllers.HomeController.homePage()
 
-GET         /security             controllers.SecurityController.securityDataSave()
+POST        /security             controllers.SecurityController.securityDataSave()
 
-GET         /trade_history        controllers.TradeHistoryController.tradeHistoryDataSave()
+POST        /trade_history        controllers.TradeHistoryController.tradeHistoryDataSave()
 
 POST        /createUser           controllers.UserController.signUp()
 
 POST        /validateUser         controllers.UserController.signIn()
 
 GET         /logout               controllers.UserController.logout()
+
+
+
+
 
 
 

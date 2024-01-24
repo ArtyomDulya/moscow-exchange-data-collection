@@ -13,7 +13,7 @@ class APIService @Inject()(implicit system: ActorSystem, materializer: Materiali
 
   def fetchDataFromExternalAPISecurity(): Future[String] = {
 
-    val responseFuture: Future[HttpResponse] = Http().singleRequest( HttpRequest(uri = "https://iss.moex.com/iss/securities"))
+    val responseFuture: Future[HttpResponse] = Http().singleRequest( HttpRequest(uri = "https://iss.moex.com/iss/securities.xml?start=0"))
 
     responseFuture.flatMap { response =>
       if (response.status.isSuccess()) {
@@ -26,7 +26,7 @@ class APIService @Inject()(implicit system: ActorSystem, materializer: Materiali
 
   def fetchDataFromExternalAPITradeHistory(): Future[String] = {
 
-    val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(uri = "https://iss.moex.com/iss/history/engines/stock/markets/shares/securities/?start="))
+    val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(uri = "https://iss.moex.com/iss/history/engines/stock/markets/shares/securities?start=0"))
 
     responseFuture.flatMap { response =>
       if (response.status.isSuccess()) {
