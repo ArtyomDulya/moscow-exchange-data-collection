@@ -1,11 +1,11 @@
-@(securities: Seq[SecurityModel])
+@(securities: Seq[SecurityModel])(implicit request: RequestHeader)
 
 @main("SecurityInfo") {
     <h2>Информация о ценных бумагах</h2>
-
     @if(securities.nonEmpty) {
         <table border="1">
             <tr>
+                <th>ID</th>
                 <th>SECID</th>
                 <th>REGNUMBER</th>
                 <th>NAME</th>
@@ -13,6 +13,7 @@
             </tr>
             @for(security <- securities) {
                 <tr>
+                    <td>@security.idSecurity</td>
                     <td>@security.secId</td>
                     <td>@security.regNumber</td>
                     <td>@security.name</td>

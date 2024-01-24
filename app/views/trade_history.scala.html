@@ -2,14 +2,14 @@
 
 @main("SecurityInfo") {
     <h2>История торгов</h2>
-
     @if(historys.nonEmpty) {
         <table border="1">
             <tr>
                 <th>SECID</th>
-                <th>REGNUMBER</th>
-                <th>NAME</th>
-                <th>EMITENTTITLE</th>
+                <th>TRADEDATE</th>
+                <th>NUMTRADES</th>
+                <th>OPEN</th>
+                <th>CLOSE</th>
             </tr>
             @for(history <- historys) {
                 <tr>
@@ -24,5 +24,4 @@
     } else {
         <p>No historys available.</p>
     }
-
 }

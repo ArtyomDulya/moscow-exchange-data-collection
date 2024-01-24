@@ -30,12 +30,12 @@ class SecurityController @Inject()()(cc: ControllerComponents,
 
   def securityDataSave() = Action.async { implicit request: Request[AnyContent] =>
 
-    apiService.fetchDataFromExternalAPISecurity().flatMap { xmlData =>
+    apiService.fetchDataFromExternalAPISecurity().flatMap { xmlDataDoc =>
 
-      val parsedData: Seq[SecurityModel] = xmlService.parseXMLSecurity(xmlData)
+      val parsedData: Seq[SecurityModel] = xmlService.parseXMLSecurity(xmlDataDoc)
 
       val securityModels: Seq[SecurityModel] = parsedData.map { value =>
-        SecurityModel(0, value.secId, value.regNumber, value.name, value.emitentTitle)
+        SecurityModel(value.id, value.idSecurity, value.secId, value.regNumber, value.name, value.emitentTitle)
       }
 
       val saveToDB = Future.sequence(securityModels.map(securityRepository.insertData))
