@@ -1,28 +1,31 @@
 @(securities: Seq[SecurityModel])(implicit request: RequestHeader)
 
 @main("SecurityInfo") {
-    <h2>Информация о ценных бумагах</h2>
-    @if(securities.nonEmpty) {
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>SECID</th>
-                <th>REGNUMBER</th>
-                <th>NAME</th>
-                <th>EMITENTTITLE</th>
-            </tr>
-            @for(security <- securities) {
+    <div class="securities-container">
+        <h1>Информация о ценных бумагах</h1>
+        @if(securities.nonEmpty) {
+            <table border="1">
                 <tr>
-                    <td>@security.idSecurity</td>
-                    <td>@security.secId</td>
-                    <td>@security.regNumber</td>
-                    <td>@security.name</td>
-                    <td>@security.emitentTitle</td>
+                    <th>ID</th>
+                    <th>SECID</th>
+                    <th>REGNUMBER</th>
+                    <th>NAME</th>
+                    <th>EMITENTTITLE</th>
                 </tr>
-            }
-        </table>
-    } else {
-        <p>No securities available.</p>
-    }
+                @for(security <- securities) {
+                    <tr>
+                        <td>@security.idSecurity</td>
+                        <td>@security.secId</td>
+                        <td>@security.regNumber</td>
+                        <td>@security.name</td>
+                        <td>@security.emitentTitle</td>
+                    </tr>
+                }
+            </table>
+        } else {
+            <p>No securities available.</p>
+        }
+    </div>
+
 
 }

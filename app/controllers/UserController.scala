@@ -3,13 +3,18 @@ package controllers
 import repositories.UserRepository
 import models.UserModel
 import play.api.libs.json.Json
-import play.api.mvc.{AbstractController, BaseController, ControllerComponents}
-
+import play.api.mvc.{AbstractController, ControllerComponents}
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{ExecutionContext, Future}
-import scala.util.{Failure, Success}
 
+
+/**
+ * Контроллер, отвечающий за регистрацию и аутентификацию
+ * @param cc
+ * @param userRepository
+ * @param ec
+ */
 @Singleton
 class UserController @Inject()(cc: ControllerComponents,
                                userRepository: UserRepository)

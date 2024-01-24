@@ -8,6 +8,14 @@ import services.{APIService, XMLService}
 
 import scala.concurrent.{ExecutionContext, Future}
 
+/**
+ * Контроллер, отвечающий за Историю торгов
+ * @param cc
+ * @param apiService
+ * @param xmlService
+ * @param tradeHistoryRepository
+ * @param ec
+ */
 @Singleton
 class TradeHistoryController @Inject()(cc: ControllerComponents,
                                        apiService: APIService,
@@ -28,6 +36,14 @@ class TradeHistoryController @Inject()(cc: ControllerComponents,
       saveToDB.map { _ =>
         Ok(views.html.trade_history(tradeHistoryModels))
       }
+    }
+  }
+
+  def deleteAllDataTradeHistory = Action.async { implicit request =>
+    tradeHistoryRepository.deleteAllData.map { rowsAffected =>
+      Ok(s"Удалено $rowsAffected записей.")
+    }.recover {
+      case ex => InternalServerError(s"Произошла ошибка при удалении данных: $ex")
     }
   }
 

@@ -3,7 +3,10 @@ package models
 
 import slick.jdbc.PostgresProfile.api._
 
-
+/**
+ * Таблица юзера
+ * @param tag
+ */
 
 class UserTable(tag: Tag) extends Table[UserModel](tag, "users") {
 

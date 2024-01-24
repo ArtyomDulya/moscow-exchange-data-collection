@@ -1,27 +1,30 @@
 @(historys: Seq[TradeHistoryModel])
 
 @main("SecurityInfo") {
-    <h2>История торгов</h2>
-    @if(historys.nonEmpty) {
-        <table border="1">
-            <tr>
-                <th>SECID</th>
-                <th>TRADEDATE</th>
-                <th>NUMTRADES</th>
-                <th>OPEN</th>
-                <th>CLOSE</th>
-            </tr>
-            @for(history <- historys) {
+    <div class="trade_history-container">
+        <h1>История торгов</h1>
+        @if(historys.nonEmpty) {
+            <table border="1">
                 <tr>
-                    <td>@history.secId</td>
-                    <td>@history.tradeDate</td>
-                    <td>@history.numTrades</td>
-                    <td>@history.open</td>
-                    <td>@history.close</td>
+                    <th>SECID</th>
+                    <th>TRADEDATE</th>
+                    <th>NUMTRADES</th>
+                    <th>OPEN</th>
+                    <th>CLOSE</th>
                 </tr>
-            }
-        </table>
-    } else {
-        <p>No historys available.</p>
-    }
+                @for(history <- historys) {
+                    <tr>
+                        <td>@history.secId</td>
+                        <td>@history.tradeDate</td>
+                        <td>@history.numTrades</td>
+                        <td>@history.open</td>
+                        <td>@history.close</td>
+                    </tr>
+                }
+            </table>
+        } else {
+            <p>No historys available.</p>
+        }
+    </div>
+
 }
