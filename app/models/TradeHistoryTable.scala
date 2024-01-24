@@ -1,10 +1,14 @@
 package models
 
-
-
 import slick.jdbc.PostgresProfile.api._
-
 import java.sql.Date
+
+
+
+/**
+ * таблица модели сущности: история торгов
+ */
+
 
 class TradeHistoryTable(tag: Tag) extends Table[TradeHistoryModel](tag, "trade_history") {
 

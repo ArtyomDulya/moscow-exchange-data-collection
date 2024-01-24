@@ -1,6 +1,6 @@
 package repositories
 
-import models.{SecurityModel, SecurityTable, TradeHistoryModel}
+import models.{SecurityModel, SecurityTable}
 import slick.jdbc.JdbcBackend.Database
 import slick.lifted.TableQuery
 import slick.jdbc.PostgresProfile.api._
@@ -8,7 +8,11 @@ import slick.jdbc.PostgresProfile.api._
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
+/**
+ * Репозиторий Информации о ценных бумагах
+ */
 
+@Singleton
 class SecurityRepository @Inject()() {
 
   val db = Database.forConfig("postgres")
@@ -26,4 +30,9 @@ class SecurityRepository @Inject()() {
 
   def getDataById(id: Long): Future[Option[SecurityModel]] =
     db.run(securityTable.filter(_.id === id).result.headOption)
+
+  def deleteAllData: Future[Int] = {
+    val deleteAction: DBIO[Int] = securityTable.delete
+    db.run(deleteAction)
+  }
 }

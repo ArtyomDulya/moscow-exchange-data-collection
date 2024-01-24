@@ -5,11 +5,20 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.{HttpRequest, HttpResponse}
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import akka.stream.Materializer
-
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
 
-class APIService @Inject()(implicit system: ActorSystem, materializer: Materializer, ec: ExecutionContext) {
+/**
+ * Http клиент
+ * @param system
+ * @param materializer
+ * @param ec
+ * @param xmlService
+ */
+
+class APIService @Inject()(implicit system: ActorSystem,
+                           materializer: Materializer,
+                           ec: ExecutionContext, xmlService: XMLService) {
 
   def fetchDataFromExternalAPISecurity(): Future[String] = {
 

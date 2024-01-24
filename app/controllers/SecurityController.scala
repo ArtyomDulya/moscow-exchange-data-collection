@@ -1,27 +1,25 @@
 package controllers
 
 
-import akka.actor.ActorSystem
-import akka.http.scaladsl.model.HttpHeader.ParsingResult.Ok
-import play.api.mvc._
 
+import play.api.mvc._
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.ExecutionContext
-import akka.actor.ActorSystem
-import akka.http.scaladsl.Http
-import akka.http.scaladsl.model._
-import akka.stream.ActorMaterializer
-import akka.http.scaladsl.unmarshalling._
-import akka.util.ByteString
 import models.SecurityModel
-
-import scala.concurrent.{ExecutionContext, Future}
-import scala.xml.XML
-import play.api.mvc._
+import scala.concurrent.{Future}
 import repositories.SecurityRepository
 import services.{APIService, XMLService}
 
-@Singleton
+/**
+ * Контроллер, отвечающий за ценные бумаги
+ * @param cc
+ * @param apiService
+ * @param xmlService
+ * @param securityRepository
+ * @param ec
+ */
+
+@Singleton()
 class SecurityController @Inject()()(cc: ControllerComponents,
                                      apiService: APIService,
                                      xmlService: XMLService,
@@ -43,6 +41,14 @@ class SecurityController @Inject()()(cc: ControllerComponents,
       saveToDB.map { _ =>
         Ok(views.html.security(securityModels))
       }
+    }
+  }
+
+  def deleteAllDataSecurity = Action.async { implicit request =>
+    securityRepository.deleteAllData.map { rowsAffected =>
+      Ok(s"Удалено $rowsAffected записей.")
+    }.recover {
+      case ex => InternalServerError(s"Произошла ошибка при удалении данных: $ex")
     }
   }
 
