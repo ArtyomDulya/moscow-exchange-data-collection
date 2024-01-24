@@ -1,0 +1,39 @@
+@(combineData: Seq[CombineModel])
+
+    @main("CombineTable") {
+        <div class="combine-container">
+            <h1>Сводные данные из таблиц: информация о ценных бумагах, история торгов</h1>
+            @if(combineData.nonEmpty) {
+                <table border="1">
+                    <tr>
+                        <th>ID</th>
+                        <th>ID Security</th>
+                        <th>Sec ID</th>
+                        <th>Reg Number</th>
+                        <th>Name</th>
+                        <th>Emitent Title</th>
+                        <th>Trade Date</th>
+                        <th>Num Trades</th>
+                        <th>Open</th>
+                        <th>Close</th>
+                    </tr>
+                    @for(combinedModel <- combineData) {
+                        <tr>
+                            <td>@combinedModel.id.getOrElse("N/A")</td>
+                            <td>@combinedModel.idSecurity</td>
+                            <td>@combinedModel.secId</td>
+                            <td>@combinedModel.regNumber</td>
+                            <td>@combinedModel.name</td>
+                            <td>@combinedModel.emitentTitle</td>
+                            <td>@combinedModel.tradeDate.map(_.toString).getOrElse("N/A")</td>
+                            <td>@combinedModel.numTrades.map(_.toString).getOrElse("N/A")</td>
+                            <td>@combinedModel.open.map(_.toString).getOrElse("N/A")</td>
+                            <td>@combinedModel.close.map(_.toString).getOrElse("N/A")</td>
+                        </tr>
+                    }
+                </table>
+            } else {
+                <p>No combined data available.</p>
+            }
+        </div>
+    }
