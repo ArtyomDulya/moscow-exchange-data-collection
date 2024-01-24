@@ -4,18 +4,21 @@ package repositories
 
 import models.{UserModel, UserTable}
 import javax.inject.{Inject, Singleton}
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{Future}
 import slick.jdbc.PostgresProfile.api._
 import scala.concurrent.ExecutionContext.Implicits.global
 import slick.jdbc.JdbcBackend.Database
 
+/**
+ * Репозиторий юзера
+ */
 
-
+@Singleton
 class UserRepository @Inject()(){
 
   val db = Database.forConfig("postgres")
 
-  private val users = TableQuery[UserTable]
+  private lazy val users = TableQuery[UserTable]
 
   def addUser(user: UserModel): Future[Int] =
     db.run(users += user)

@@ -1,16 +1,100 @@
 
-body {
+/*securities*/
+
+.securities-container  {
     text-align: center;
 }
 
-table {
+.securities-container table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 10px;
 }
 
-table th,table td {
+.securities-container table th,table td {
     padding: 15px;
 }
 
+
+/*trade_history*/
+
+
+.trade_history-container  {
+    text-align: center;
+}
+
+.trade_history-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.trade_history-container table th,table td {
+    padding: 15px;
+}
+
+
+/*login*/
+
+
+.login-container {
+    text-align: center;
+}
+
+
+/*home*/
+
+
+.home-container {
+    display: flex;
+    flex-direction: row; /* Располагает элементы в ряд */
+}
+
+form, .button-link {
+    margin-right: 10px; /* Добавляет отступ между элементами */
+    padding: 12px 0px;
+}
+
+.button-link {
+    text-decoration: none; /* Убирает стандартное подчеркивание у ссылки */
+    display: inline-block; /* Преобразует ссылку в блочный элемент */
+    padding: 8px 12px; /* Добавляет отступы вокруг текста ссылки */
+    background-color: #007bff; /* Цвет фона для выгляда как кнопка */
+    color: #ffffff; /* Цвет текста */
+    border: none; /* Убирает границу */
+    border-radius: 4px; /* Создает закругленные углы */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Плавное изменение цвета фона при наведении */
+}
+
+.button-link:hover {
+    background-color: #0056b3; /* Цвет фона при наведении */
+}
+
+
+/*combine_table*/
+
+
+.combine-container {
+    text-align: center;
+}
+
+.combine-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.combine-container table th,table td {
+    padding: 15px;
+}
+
+
+/*delete-container*/
+
+
+.delete-container {
+    display: flex;
+    flex-direction: row;
+}
 

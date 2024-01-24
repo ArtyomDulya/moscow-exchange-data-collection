@@ -1,3 +1,8 @@
+
+  /**
+    Здесь планировалась миграция, но что-то пошло не так......
+    */
+
 databaseChangeLog:
   - include:
       file: db/changelog/db.changelog-1.0.sql

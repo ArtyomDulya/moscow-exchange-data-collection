@@ -3,7 +3,10 @@ package models
 import slick.jdbc.PostgresProfile.api._
 
 
-
+/**
+ * Таблица, сущности: информация о ценных бумагах
+ * @param tag
+ */
 class SecurityTable(tag: Tag) extends Table[SecurityModel](tag, "securities") {
 
   def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)

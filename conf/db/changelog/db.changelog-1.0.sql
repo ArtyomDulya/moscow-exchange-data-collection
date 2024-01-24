@@ -10,6 +10,8 @@ CREATE TABLE users
 );
 
 --changeset artyomdulya:2
+
+
 CREATE TABLE securities
 (
     id            SERIAL PRIMARY KEY,
@@ -31,6 +33,8 @@ CREATE TABLE trade_history
     open       DOUBLE PRECISION,
     close      DOUBLE PRECISION
 );
+
+DROP TABLE trade_history;
 
 
 

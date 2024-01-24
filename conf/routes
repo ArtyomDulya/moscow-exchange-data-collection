@@ -6,19 +6,25 @@
 # An example controller showing a sample home page
 
 
-GET         /                     controllers.UserController.loginPage()
+GET         /                                 controllers.UserController.loginPage()
 
-GET         /home                 controllers.HomeController.homePage()
+GET         /home                             controllers.HomeController.homePage()
 
-POST        /security             controllers.SecurityController.securityDataSave()
+POST        /security                         controllers.SecurityController.securityDataSave()
 
-POST        /trade_history        controllers.TradeHistoryController.tradeHistoryDataSave()
+POST        /trade_history                    controllers.TradeHistoryController.tradeHistoryDataSave()
 
-POST        /createUser           controllers.UserController.signUp()
+POST        /combine_table                    controllers.CombineController.combineTable()
 
-POST        /validateUser         controllers.UserController.signIn()
+POST        /createUser                       controllers.UserController.signUp()
 
-GET         /logout               controllers.UserController.logout()
+POST        /validateUser                     controllers.UserController.signIn()
+
+POST        /deleteAllDataSecurity            controllers.SecurityController.deleteAllDataSecurity()
+
+POST        /deleteAllDataTradeHistory        controllers.TradeHistoryController.deleteAllDataTradeHistory()
+
+GET         /logout                           controllers.UserController.logout()
 
 
 
@@ -27,4 +33,4 @@ GET         /logout               controllers.UserController.logout()
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file         controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                     controllers.Assets.versioned(path="/public", file: Asset)
